@@ -37,6 +37,6 @@ mongoose
   .connect(process.env.MONGO_URI || "mongodb://localhost:27017/jobportal")
   .then(() => {
     console.log("✅ MongoDB Connected");
-    server.listen(5000, () => console.log("🚀 Server running on port 5000"));
-  })
+    const PORT = process.env.PORT || 10000;
+server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
   .catch((err) => console.log("❌ MongoDB Error:", err));
