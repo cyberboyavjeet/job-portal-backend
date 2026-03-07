@@ -34,9 +34,12 @@ io.on("connection", (socket) => {
 
 // MongoDB + Server Start
 mongoose
-  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/jobportal")
+  .connect(process.env.MONGO_URI)
   .then(() => {
     console.log("✅ MongoDB Connected");
     const PORT = process.env.PORT || 10000;
-server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
-  .catch((err) => console.log("❌ MongoDB Error:", err));
+    server.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
+  })
+  .catch((err) => {
+    console.log("❌ MongoDB Error:", err);
+  });
