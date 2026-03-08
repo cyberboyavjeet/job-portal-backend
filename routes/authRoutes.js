@@ -1,3 +1,10 @@
+const express = require("express");
+const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
+const OTP = require("../models/OTP");
+const sendOTP = require("../utils/sendEmail");
 // Verify OTP + Register
 router.post("/register", async (req, res) => {
   try {
